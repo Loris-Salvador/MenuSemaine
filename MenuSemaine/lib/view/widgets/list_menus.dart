@@ -1,41 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:menusemaine/services/lists_updated/list_updated_bloc.dart';
+import 'package:menusemaine/view/styles/text_styles.dart';
+
+import '../../services/list_update/list_update_cubit.dart';
 
 class ListMenus extends StatelessWidget {
 
-  final ListUpdatedState myState;
+  final List<String> list;
 
-  ListMenus({Key? key, required this.myState}) : super(key: key);
+
+  const ListMenus(this.list, {super.key});
 
   @override
   Widget build(BuildContext context) {
 
-    List<String> list = [];
-
-
-    return BlocBuilder<ListUpdatedBloc, ListUpdatedState>(
-      builder: (context, state) {
-
-        print(state);
-        if (state.runtimeType == myState.runtimeType) {
-          print("YO");
-          list = state.myList;
-          print(list);
-        }
-        return ListView.builder(
-          itemCount: list.length,
-          itemExtent: 25, // Hauteur de chaque élément de la liste
+    return ListView.builder(
+          itemCount: list.length, // Ajustez la valeur pour l'espacement vertical
           itemBuilder: (context, index) {
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 1), // Ajustez la valeur pour l'espacement vertical
-              child: ListTile(
-                title: Text(list[index]),
-              ),
+              child:  Dismissible(
+                background: Container(color: Colors.red),
+                onDismissed: (direction) {
+                  BlocProvider.of<ListUpdateCubit>(context).removeMenuToLundi(list[index].toString());
+                },
+                key: Key("$index-${DateTime.now().millisecondsSinceEpoch}"),
+                child: ListTile(
+                  title: Text(list[index]),
+                ),
+              )
             );
           },
         );
-      },
-    );
   }
 }

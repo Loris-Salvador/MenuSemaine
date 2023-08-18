@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:menusemaine/services/add_menu/add_menu_bloc.dart';
+import 'package:menusemaine/services/list_update/list_update_cubit.dart';
 
 class AddMenuDialog extends StatefulWidget {
   @override
@@ -61,9 +61,13 @@ class _AddMenuDialogState extends State<AddMenuDialog> {
         TextButton(
           onPressed: () {
             String selectedMenu = menuNameController.text;
-            BlocProvider.of<AddMenuBloc>(context).add(
+
+            /*BlocProvider.of<AddMenuBloc>(context).add(
               AddMenuEvent(selectedMenu, selectedDay),
-            );
+            );*/
+
+            BlocProvider.of<ListUpdateCubit>(context).addMenuToLundi(selectedDay, selectedMenu);
+
             Navigator.pop(context);
           },
           child: Text('Ajouter'),

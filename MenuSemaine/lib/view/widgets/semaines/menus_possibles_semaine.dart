@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:menusemaine/services/list_update/list_update_cubit.dart';
 import 'package:menusemaine/view/widgets/list_menus.dart';
 import 'package:menusemaine/view/widgets/containers/menus_possibles_container.dart';
 
-import '../../../services/add_menu/add_menu_bloc.dart';
-import '../../../services/lists_updated/list_updated_bloc.dart';
+import '../../../repo/lists_menus_repo.dart';
+
 
 
 
 
 class MenusPossiblesSemaine extends StatelessWidget {
 
-  const MenusPossiblesSemaine({super.key});
+  final ListsMenusRepository repo;
+
+  const MenusPossiblesSemaine(this.repo, {super.key});
 
 
 
   @override
   Widget build(BuildContext context) {
-
-    List<String> list = [];
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
@@ -29,7 +31,12 @@ class MenusPossiblesSemaine extends StatelessWidget {
               children: [
                 Text("Lundi", textAlign: TextAlign.center),
                 Expanded(
-                  child: ListMenus(myState: ListLundiUpdatedState(listLundi: list)),
+                  child: BlocBuilder<ListUpdateCubit, ListUpdateState>(
+                    buildWhen: (previous, current) => current is ListLundiUpdatedState,
+                    builder: (context, state) {
+                      return ListMenus(repo.Lundi);
+                    },
+                  ),
                 )
               ],
             ),
@@ -40,7 +47,13 @@ class MenusPossiblesSemaine extends StatelessWidget {
               children: [
                 Text("Mardi", textAlign: TextAlign.center),
                 Expanded(
-                  child: ListMenus(myState: ListMardiUpdatedState(listMardi: list),),
+                  child: BlocBuilder<ListUpdateCubit, ListUpdateState>(
+                    buildWhen: (previous, current) => current is ListMardiUpdatedState,
+                    builder: (context, state) {
+                      print("Mardi" + state.toString());
+                      return ListMenus(repo.Mardi);
+                    },
+                  ),
                 )
               ],
             ),
@@ -51,7 +64,7 @@ class MenusPossiblesSemaine extends StatelessWidget {
               children: [
                 Text("Mercredi", textAlign: TextAlign.center),
                 Expanded(
-                  child: ListMenus(myState: ListMercrediUpdatedState(listMercredi: list),),
+                  child: ListMenus(repo.Mercredi),
                 )
               ],
             ),
@@ -62,7 +75,7 @@ class MenusPossiblesSemaine extends StatelessWidget {
               children: [
                 Text("Jeudi", textAlign: TextAlign.center),
                 Expanded(
-                  child: ListMenus(myState: ListJeudiUpdatedState(listJeudi: list),),
+                  child: ListMenus(repo.Jeudi),
                 )
               ],
             ),
@@ -73,7 +86,7 @@ class MenusPossiblesSemaine extends StatelessWidget {
               children: [
                 Text("Vendredi", textAlign: TextAlign.center),
                 Expanded(
-                  child: ListMenus(myState: ListVendrediUpdatedState(listVendredi: list),),
+                  child: ListMenus(repo.Vendredi),
                 )
               ],
             ),
@@ -84,7 +97,7 @@ class MenusPossiblesSemaine extends StatelessWidget {
               children: [
                 Text("Samedi", textAlign: TextAlign.center),
                 Expanded(
-                  child: ListMenus(myState:  ListSamediUpdatedState(listSamedi: list),),
+                  child: ListMenus(repo.Samedi),
                 )
               ],
             ),
@@ -95,7 +108,7 @@ class MenusPossiblesSemaine extends StatelessWidget {
               children: [
                 Text("Dimanche", textAlign: TextAlign.center),
                 Expanded(
-                  child: ListMenus(myState: ListDimancheUpdatedState(listDimanche: list),),
+                  child: ListMenus(repo.Dimanche),
                 )
               ],
             ),
