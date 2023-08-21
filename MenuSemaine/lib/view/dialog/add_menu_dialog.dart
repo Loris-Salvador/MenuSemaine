@@ -66,7 +66,7 @@ class _AddMenuDialogState extends State<AddMenuDialog> {
               AddMenuEvent(selectedMenu, selectedDay),
             );*/
 
-            BlocProvider.of<ListUpdateCubit>(context).addMenuToLundi(selectedDay, selectedMenu);
+            BlocProvider.of<ListUpdateCubit>(context).addMenu(selectedDay, selectedMenu);
 
             Navigator.pop(context);
           },

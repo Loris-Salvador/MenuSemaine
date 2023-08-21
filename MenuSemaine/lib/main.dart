@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:menusemaine/repo/lists_menus_repo.dart';
+import 'package:menusemaine/repo/semaines.repo.dart';
+import 'package:menusemaine/services/file/file.dart';
 import 'package:menusemaine/services/list_loading/list_loaded_cubit.dart';
 import 'package:menusemaine/services/list_update/list_update_cubit.dart';
+import 'package:menusemaine/services/tier_menu/tirer_menu_cubit.dart';
 import 'package:menusemaine/view/screens/home_screen.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 Future<void> main() async {
+
+
 
   WidgetsFlutterBinding.ensureInitialized();
 // Open the database and store the reference.
@@ -74,12 +79,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    ListsMenusRepository repos = ListsMenusRepository(database);//db
+    ListsMenusRepository reposMenu = ListsMenusRepository(database);//db
+    SemaineRepository repoSemaine = SemaineRepository(database);
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ListLoadingCubit(repos)),
-        BlocProvider(create: (context) => ListUpdateCubit(repos)),
+        BlocProvider(create: (context) => ListLoadingCubit(reposMenu, repoSemaine)),
+        BlocProvider(create: (context) => ListUpdateCubit(reposMenu)),
+        BlocProvider(create: (context) => TirerMenuCubit(reposMenu, repoSemaine)),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

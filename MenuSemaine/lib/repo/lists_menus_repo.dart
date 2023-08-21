@@ -54,6 +54,37 @@ class ListsMenusRepository
     Lundi.remove(menuName);
     await deleteMenuFromLundi(menuName);
   }
+  void removeMardi(String menuName) async
+  {
+    Mardi.remove(menuName);
+    await deleteMenuFromMardi(menuName);
+  }
+  void removeMercredi(String menuName) async
+  {
+    Mercredi.remove(menuName);
+    await deleteMenuFromMercredi(menuName);
+  }
+  void removeJeudi(String menuName) async
+  {
+    Jeudi.remove(menuName);
+    await deleteMenuFromJeudi(menuName);
+  }
+  void removeVendredi(String menuName) async
+  {
+    Vendredi.remove(menuName);
+    await deleteMenuFromVendredi(menuName);
+  }
+  void removeSamedi(String menuName) async
+  {
+    Samedi.remove(menuName);
+    await deleteMenuFromSamedi(menuName);
+  }
+  void removeDimanche(String menuName) async
+  {
+    Dimanche.remove(menuName);
+    await deleteMenuFromDimanche(menuName);
+  }
+
 
 
 
@@ -234,7 +265,6 @@ class ListsMenusRepository
     // Query the table for all The Dogs.
     final List<Map<String, dynamic>> maps = await db.query('MenuLundi');
 
-    print("MAP : " + maps.length.toString());
 
     // Convert the List<Map<String, dynamic> into a List<Dog>.
     return List.generate(maps.length, (i) {
@@ -327,6 +357,84 @@ class ListsMenusRepository
     // Remove the Dog from the database.
     await db.delete(
       'MenuLundi',
+      // Use a `where` clause to delete a specific dog.
+      where: 'nom like ?',
+      // Pass the Dog's id as a whereArg to prevent SQL injection.
+      whereArgs: [name],
+    );
+  }
+  Future<void> deleteMenuFromMardi(String name) async {
+    // Get a reference to the database.
+    final db = await database;
+
+    // Remove the Dog from the database.
+    await db.delete(
+      'MenuMardi',
+      // Use a `where` clause to delete a specific dog.
+      where: 'nom like ?',
+      // Pass the Dog's id as a whereArg to prevent SQL injection.
+      whereArgs: [name],
+    );
+  }
+  Future<void> deleteMenuFromMercredi(String name) async {
+    // Get a reference to the database.
+    final db = await database;
+
+    // Remove the Dog from the database.
+    await db.delete(
+      'MenuMercredi',
+      // Use a `where` clause to delete a specific dog.
+      where: 'nom like ?',
+      // Pass the Dog's id as a whereArg to prevent SQL injection.
+      whereArgs: [name],
+    );
+  }
+  Future<void> deleteMenuFromJeudi(String name) async {
+    // Get a reference to the database.
+    final db = await database;
+
+    // Remove the Dog from the database.
+    await db.delete(
+      'MenuJeudi',
+      // Use a `where` clause to delete a specific dog.
+      where: 'nom like ?',
+      // Pass the Dog's id as a whereArg to prevent SQL injection.
+      whereArgs: [name],
+    );
+  }
+  Future<void> deleteMenuFromVendredi(String name) async {
+    // Get a reference to the database.
+    final db = await database;
+
+    // Remove the Dog from the database.
+    await db.delete(
+      'MenuVendredi',
+      // Use a `where` clause to delete a specific dog.
+      where: 'nom like ?',
+      // Pass the Dog's id as a whereArg to prevent SQL injection.
+      whereArgs: [name],
+    );
+  }
+  Future<void> deleteMenuFromSamedi(String name) async {
+    // Get a reference to the database.
+    final db = await database;
+
+    // Remove the Dog from the database.
+    await db.delete(
+      'MenuSamedi',
+      // Use a `where` clause to delete a specific dog.
+      where: 'nom like ?',
+      // Pass the Dog's id as a whereArg to prevent SQL injection.
+      whereArgs: [name],
+    );
+  }
+  Future<void> deleteMenuFromDimanche(String name) async {
+    // Get a reference to the database.
+    final db = await database;
+
+    // Remove the Dog from the database.
+    await db.delete(
+      'MenuDimanche',
       // Use a `where` clause to delete a specific dog.
       where: 'nom like ?',
       // Pass the Dog's id as a whereArg to prevent SQL injection.

@@ -11,13 +11,67 @@ class ListUpdateCubit extends Cubit<ListUpdateState> {
   ListUpdateCubit(this.repo) : super(ListUpdateInitialState());
 
 
-  void addMenuToLundi(String day, String menuName) {
-    repo.addLundi(menuName);
-    emit(ListLundiUpdatedState());
-  }
+ void addMenu(String day, String menuName)
+ {
+   if(day == "Lundi"){
+     repo.addLundi(menuName);
+      emit(ListLundiUpdatedState());
+   }
+    else if(day == "Mardi"){
+      repo.addMardi(menuName);
+      emit(ListMardiUpdatedState());
+    }
+    else if(day == "Mercredi"){
+      repo.addMercredi(menuName);
+      emit(ListMercrediUpdatedState());
+    }
+    else if(day == "Jeudi"){
+      repo.addJeudi(menuName);
+      emit(ListJeudiUpdatedState());
+    }
+    else if(day == "Vendredi"){
+      repo.addVendredi(menuName);
+      emit(ListVendrediUpdatedState());
+    }
+    else if(day == "Samedi"){
+      repo.addSamedi(menuName);
+      emit(ListSamediUpdatedState());
+    }
+    else if(day == "Dimanche"){
+      repo.addDimanche(menuName);
+      emit(ListDimancheUpdatedState());
+    }
+ }
 
-  void removeMenuToLundi(String menuName) {
-    repo.removeLundi(menuName);
-    emit(ListLundiUpdatedState());
+  void removeMenu(String day, String menuName) {
+      if(day == "Lundi"){
+        repo.removeLundi(menuName);
+        emit(ListLundiUpdatedState());
+      }
+      else if(day == "Mardi"){
+        print("OK");
+        repo.removeMardi(menuName);
+        emit(ListMardiUpdatedState());
+      }
+      else if(day == "Mercredi"){
+        repo.removeMercredi(menuName);
+        emit(ListMercrediUpdatedState());
+      }
+      else if(day == "Jeudi"){
+        repo.removeJeudi(menuName);
+        emit(ListJeudiUpdatedState());
+      }
+      else if(day == "Vendredi"){
+        repo.removeVendredi(menuName);
+        emit(ListVendrediUpdatedState());
+      }
+      else if(day == "Samedi"){
+        repo.removeSamedi(menuName);
+        emit(ListSamediUpdatedState());
+      }
+      else if(day == "Dimanche"){
+        repo.removeDimanche(menuName);
+        emit(ListDimancheUpdatedState());
+      }
   }
 }

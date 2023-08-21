@@ -7,7 +7,6 @@ class MenusPossiblesContainer extends Container {
       minWidth: 100,
       maxWidth: 200,
       minHeight: 150,
-      maxHeight: 200,
     ),
     decoration: BoxDecoration(
       border: Border.all(
@@ -15,7 +14,6 @@ class MenusPossiblesContainer extends Container {
         width: 1.0,
       ),
     ),
-    height: 200,
     width: 100,
     child: child,
   );

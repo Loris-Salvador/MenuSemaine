@@ -5,7 +5,7 @@ class MenuJourContainer extends Container {
       : super(
     constraints: const BoxConstraints(
       minWidth: 75,
-      maxWidth: 200,
+      maxWidth: 100,
       minHeight: 90,
       maxHeight: 200,
     ),
@@ -15,7 +15,7 @@ class MenuJourContainer extends Container {
         width: 1.0,
       ),
     ),
-    height: 100,
+    height: 90,
     child: child,
   );
 }

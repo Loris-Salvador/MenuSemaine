@@ -29,12 +29,13 @@ class MenusPossiblesSemaine extends StatelessWidget {
             child:
              Column(
               children: [
-                Text("Lundi", textAlign: TextAlign.center),
+                Text("Lundi", textAlign: TextAlign.center, style: TextStyle(fontSize: 20),),
+                SizedBox(height: 10.0,),
                 Expanded(
                   child: BlocBuilder<ListUpdateCubit, ListUpdateState>(
                     buildWhen: (previous, current) => current is ListLundiUpdatedState,
                     builder: (context, state) {
-                      return ListMenus(repo.Lundi);
+                      return ListMenus(repo.Lundi, "Lundi");
                     },
                   ),
                 )
@@ -44,14 +45,16 @@ class MenusPossiblesSemaine extends StatelessWidget {
           MenusPossiblesContainer(
             child:
               Column(
+
               children: [
-                Text("Mardi", textAlign: TextAlign.center),
+                Text("Mardi", textAlign: TextAlign.center, style: TextStyle(fontSize: 20),),
+                SizedBox(height: 10.0,),
                 Expanded(
                   child: BlocBuilder<ListUpdateCubit, ListUpdateState>(
                     buildWhen: (previous, current) => current is ListMardiUpdatedState,
                     builder: (context, state) {
                       print("Mardi" + state.toString());
-                      return ListMenus(repo.Mardi);
+                      return ListMenus(repo.Mardi, "Mardi");
                     },
                   ),
                 )
@@ -62,9 +65,15 @@ class MenusPossiblesSemaine extends StatelessWidget {
             child:
               Column(
               children: [
-                Text("Mercredi", textAlign: TextAlign.center),
+                Text("Mercredi", textAlign: TextAlign.center, style: TextStyle(fontSize: 20),),
+                SizedBox(height: 10.0,),
                 Expanded(
-                  child: ListMenus(repo.Mercredi),
+                  child: BlocBuilder<ListUpdateCubit, ListUpdateState>(
+                    buildWhen: (previous, current) => current is ListMercrediUpdatedState,
+                    builder: (context, state) {
+                      return ListMenus(repo.Mercredi, "Mercredi");
+                    },
+                  ),
                 )
               ],
             ),
@@ -73,9 +82,16 @@ class MenusPossiblesSemaine extends StatelessWidget {
             child:
              Column(
               children: [
-                Text("Jeudi", textAlign: TextAlign.center),
+                Text("Jeudi", textAlign: TextAlign.center, style: TextStyle(fontSize: 20),),
+                SizedBox(height: 10.0,),
                 Expanded(
-                  child: ListMenus(repo.Jeudi),
+                  child: BlocBuilder<ListUpdateCubit, ListUpdateState>(
+                    buildWhen: (previous, current) => current is ListJeudiUpdatedState,
+                    builder: (context, state) {
+                      print("JEUDIIII");
+                      return ListMenus(repo.Jeudi, "Jeudi");
+                    },
+                  ),
                 )
               ],
             ),
@@ -84,9 +100,15 @@ class MenusPossiblesSemaine extends StatelessWidget {
             child:
              Column(
               children: [
-                Text("Vendredi", textAlign: TextAlign.center),
+                Text("Vendredi", textAlign: TextAlign.center, style: TextStyle(fontSize: 20),),
+                SizedBox(height: 10.0,),
                 Expanded(
-                  child: ListMenus(repo.Vendredi),
+                  child: BlocBuilder<ListUpdateCubit, ListUpdateState>(
+                    buildWhen: (previous, current) => current is ListVendrediUpdatedState,
+                    builder: (context, state) {
+                      return ListMenus(repo.Vendredi, "Vendredi");
+                    },
+                  ),
                 )
               ],
             ),
@@ -95,9 +117,15 @@ class MenusPossiblesSemaine extends StatelessWidget {
             child:
              Column(
               children: [
-                Text("Samedi", textAlign: TextAlign.center),
+                Text("Samedi", textAlign: TextAlign.center, style: TextStyle(fontSize: 20),),
+                SizedBox(height: 10.0,),
                 Expanded(
-                  child: ListMenus(repo.Samedi),
+                  child: BlocBuilder<ListUpdateCubit, ListUpdateState>(
+                    buildWhen: (previous, current) => current is ListSamediUpdatedState,
+                    builder: (context, state) {
+                      return ListMenus(repo.Samedi, "Samedi");
+                    },
+                  ),
                 )
               ],
             ),
@@ -106,9 +134,14 @@ class MenusPossiblesSemaine extends StatelessWidget {
             child:
              Column(
               children: [
-                Text("Dimanche", textAlign: TextAlign.center),
-                Expanded(
-                  child: ListMenus(repo.Dimanche),
+                Text("Dimanche", textAlign: TextAlign.center, style: TextStyle(fontSize: 20),),
+                SizedBox(height: 10.0,),                Expanded(
+                  child: BlocBuilder<ListUpdateCubit, ListUpdateState>(
+                    buildWhen: (previous, current) => current is ListDimancheUpdatedState,
+                    builder: (context, state) {
+                      return ListMenus(repo.Dimanche, "Dimanche");
+                    },
+                  ),
                 )
               ],
             ),

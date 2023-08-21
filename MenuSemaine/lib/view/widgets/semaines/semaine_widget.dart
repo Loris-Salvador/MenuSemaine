@@ -8,7 +8,9 @@ import '../containers/menu_jour_container.dart';
 
 class SemaineWidget extends StatelessWidget {
 
-  const SemaineWidget({super.key});
+  final List<String>semaine;
+
+  const SemaineWidget({super.key, required this.semaine});
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +20,12 @@ class SemaineWidget extends StatelessWidget {
         children: [
           MenuJourContainer(
             child:
-            const Column(
+             Column(
               children: [
                 Text("Lundi", textAlign: TextAlign.center),
                 Padding(
                   padding:EdgeInsets.fromLTRB(3, 10, 3, 0),
-                  child: Text("poulet frites", textAlign: TextAlign.center),
+                  child: Text(semaine[0], textAlign: TextAlign.center),
                 )
               ],
             ),
@@ -35,7 +37,7 @@ class SemaineWidget extends StatelessWidget {
                 const Text("Mardi", textAlign: TextAlign.center),
                 Padding(
                   padding:EdgeInsets.fromLTRB(3, 10, 3, 0),
-                  child: Text("poulet frites", textAlign: TextAlign.center),
+                  child: Text(semaine[1], textAlign: TextAlign.center),
                 )
               ],
             ),
@@ -47,7 +49,7 @@ class SemaineWidget extends StatelessWidget {
                 const Text("Mercredi", textAlign: TextAlign.center),
                 Padding(
                   padding:EdgeInsets.fromLTRB(3, 10, 3, 0),
-                  child: Text("poulet frites", textAlign: TextAlign.center),
+                  child: Text(semaine[2], textAlign: TextAlign.center),
                 )
               ],
             ),
@@ -59,7 +61,7 @@ class SemaineWidget extends StatelessWidget {
                 const Text("Jeudi", textAlign: TextAlign.center),
                 Padding(
                   padding:EdgeInsets.fromLTRB(3, 10, 3, 0),
-                  child: Text("poulet frites", textAlign: TextAlign.center),
+                  child: Text(semaine[3], textAlign: TextAlign.center),
                 )              ],
             ),
           ),
@@ -70,7 +72,7 @@ class SemaineWidget extends StatelessWidget {
                 const Text("Vendredi", textAlign: TextAlign.center),
                 Padding(
                   padding:EdgeInsets.fromLTRB(3, 10, 3, 0),
-                  child: Text("poulet frites", textAlign: TextAlign.center),
+                  child: Text(semaine[4], textAlign: TextAlign.center),
                 )              ],
             ),
           ),
@@ -81,7 +83,7 @@ class SemaineWidget extends StatelessWidget {
                 const Text("Samedi", textAlign: TextAlign.center),
                 Padding(
                   padding:EdgeInsets.fromLTRB(3, 10, 3, 0),
-                  child: Text("poulet frites", textAlign: TextAlign.center),
+                  child: Text(semaine[5], textAlign: TextAlign.center),
                 )              ],
             ),
           ),
@@ -92,7 +94,7 @@ class SemaineWidget extends StatelessWidget {
                 const Text("Dimanche", textAlign: TextAlign.center),
                 Padding(
                   padding:EdgeInsets.fromLTRB(3, 10, 3, 0),
-                  child: Text("poulet frites", textAlign: TextAlign.center),
+                  child: Text(semaine[6], textAlign: TextAlign.center),
                 )              ],
             ),
           ),

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:menusemaine/view/styles/text_styles.dart';
-
 import '../../services/list_update/list_update_cubit.dart';
 
 class ListMenus extends StatelessWidget {
 
   final List<String> list;
 
+  final String listName;
 
-  const ListMenus(this.list, {super.key});
+
+  const ListMenus(this.list, this.listName, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class ListMenus extends StatelessWidget {
               child:  Dismissible(
                 background: Container(color: Colors.red),
                 onDismissed: (direction) {
-                  BlocProvider.of<ListUpdateCubit>(context).removeMenuToLundi(list[index].toString());
+                    BlocProvider.of<ListUpdateCubit>(context).removeMenu(listName, list[index].toString());
                 },
                 key: Key("$index-${DateTime.now().millisecondsSinceEpoch}"),
                 child: ListTile(
